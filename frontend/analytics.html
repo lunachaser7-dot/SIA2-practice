@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analytics — Church Finance</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="reports-page analytics-page">
+
+    <div class="sidebar">
+        <h2>Church Finance</h2>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="income.html">Income</a>
+            <a href="expenses.html">Expenses</a>
+            <a href="reports.html">Reports</a>
+            <a href="analytics.html" class="active">Analytics</a>
+        </nav>
+    </div>
+
+    <div class="main">
+
+        <div class="reports-hero">
+            <div class="hero-content">
+                <p class="eyebrow">Analytics</p>
+                <h1>Insightful financial health at a glance</h1>
+                <p class="muted">Track giving, spending, and cash flow trends with calm confidence. See the numbers that matter most for your ministry planning.</p>
+            </div>
+            <svg class="hero-decor" width="440" height="280" viewBox="0 0 440 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="g2" x1="0" x2="1">
+                        <stop offset="0" stop-color="#8b5cf6" />
+                        <stop offset="1" stop-color="#2563eb" />
+                    </linearGradient>
+                </defs>
+                <circle cx="340" cy="60" r="100" fill="url(#g2)" opacity="0.14" />
+                <rect x="-20" y="150" width="420" height="180" rx="80" fill="#22c55e" opacity="0.06" />
+            </svg>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card green">
+                <h2>Monthly Giving</h2>
+                <p>₱34,200</p>
+            </div>
+            <div class="card red">
+                <h2>Monthly Spending</h2>
+                <p>₱12,480</p>
+            </div>
+            <div class="card blue">
+                <h2>Net Surplus</h2>
+                <p>₱21,720</p>
+            </div>
+            <div class="card">
+                <h2>Budget Coverage</h2>
+                <p>96%</p>
+            </div>
+        </div>
+
+        <section class="stats-panel">
+            <section class="overview">
+                <h3>Trend highlights</h3>
+                <p>Use these insights to guide next month’s offering appeals, ministry expenses, and reserve planning.</p>
+                <div class="stats-grid">
+                    <div class="summary-card">
+                        <h4>Recurring Donations</h4>
+                        <p>+22%</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Expenses vs Plan</h4>
+                        <p>92%</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Reserve Growth</h4>
+                        <p>₱7,600</p>
+                    </div>
+                </div>
+            </section>
+            <aside class="summary-card action-card">
+                <h3>Actionable next steps</h3>
+                <p>Review giving categories, compare expense trends, and export summary reports for your finance meeting.</p>
+                <button>Export report</button>
+            </aside>
+        </section>
+
+        <section class="chart-row">
+            <div class="card chart-card">
+                <div class="chart-header">
+                    <h3>Giving Trend</h3>
+                    <p class="muted">Weekly performance across donations.</p>
+                </div>
+                <div class="chart-placeholder">
+                    <div class="chart-line"></div>
+                    <p>Weekly giving data visualization</p>
+                </div>
+            </div>
+            <div class="card chart-card">
+                <div class="chart-header">
+                    <h3>Expense Breakdown</h3>
+                    <p class="muted">Category share of monthly spending.</p>
+                </div>
+                <div class="analytics-legend">
+                    <div class="legend-pill blue-pill">Ministry</div>
+                    <div class="legend-pill green-pill">Facilities</div>
+                    <div class="legend-pill red-pill">Operations</div>
+                </div>
+                <div class="chart-placeholder small">
+                    <div class="pie-slice slice-1"></div>
+                    <div class="pie-slice slice-2"></div>
+                    <div class="pie-slice slice-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card transactions-card">
+            <h3>Recent Transactions</h3>
+            <p class="muted">Latest giving and expense records for quick review.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tithe</td>
+                        <td>₱8,500</td>
+                        <td>Sunday offering</td>
+                        <td>2026-05-13</td>
+                    </tr>
+                    <tr>
+                        <td>Ministry</td>
+                        <td>₱2,300</td>
+                        <td>Outreach supplies</td>
+                        <td>2026-05-12</td>
+                    </tr>
+                    <tr>
+                        <td>Operations</td>
+                        <td>₱1,200</td>
+                        <td>Office utilities</td>
+                        <td>2026-05-11</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="footer">Data refreshed hourly · Tap a report card to export or share with your team.</div>
+    </div>
+
+</body>
+
+</html>

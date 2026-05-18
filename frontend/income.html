@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Income — Church Finance</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body class="income-page">
+
+    <div class="sidebar">
+        <h2>Church Finance</h2>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="income.html" class="active">Income</a>
+            <a href="expenses.html">Expenses</a>
+            <a href="reports.html">Reports</a>
+            <a href="#" id="logoutLink">Logout</a>
+        </nav>
+    </div>
+
+    <div class="main">
+
+        <div class="page-header">
+            <div>
+                <p class="eyebrow">Income</p>
+                <h1>All Income</h1>
+                <p class="page-intro">Review donations and other income sources. Add new entries or export summaries for stewardship reports.</p>
+            </div>
+            <div class="page-actions">
+                <a class="btn" href="add_transaction.html">+ Add Income</a>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card green">
+                <h2>Total Income</h2>
+                <p id="totalIncome">₱0</p>
+            </div>
+            <div class="card blue">
+                <h2>This Month</h2>
+                <p id="monthIncome">₱0</p>
+            </div>
+            <div class="card">
+                <h2>Transactions</h2>
+                <p id="incomeCount">0</p>
+            </div>
+        </div>
+
+        <section class="overview">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+                <div style="flex:1;min-width:220px">
+                    <input id="searchBox" placeholder="Search category or description" />
+                </div>
+                <div style="width:220px;text-align:right">
+                    <select id="perPage">
+                        <option value="10">Show 10</option>
+                        <option value="25">Show 25</option>
+                        <option value="50">Show 50</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="margin-top:18px;overflow:auto">
+                <table style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="incomeTable">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="footer">Updated just now · Values reflect recorded transactions.</div>
+
+    </div>
+
+    <script src="/config.js"></script>
+    <script src="js/income.js"></script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Income</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>Church Finance</h2>
+
+        <a href="index.html">Dashboard</a>
+        <a href="income.html">Income</a>
+        <a href="expenses.html">Expenses</a>
+
+    </div>
+
+    <div class="main">
+
+        <h1>Income Records</h1>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="financeTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register — Church Finance</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-brand">
+            <div class="login-logo">📝</div>
+            <h1>Create an account</h1>
+            <p>Register as a user so you can log in and manage church finances.</p>
+        </div>
+
+        <div id="serverStatus" class="status-banner"></div>
+
+        <form id="registerForm" class="login-form">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" placeholder="Your full name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@example.com" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Create a password" required>
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Repeat your password" required>
+
+            <p id="registerError" class="error-message"></p>
+            <p id="registerSuccess" class="success-message"></p>
+
+            <button type="submit">Create account</button>
+            <p class="form-note">Already registered? <a href="login.html">Sign in</a></p>
+        </form>
+    </div>
+</div>
+
+<script src="/config.js"></script>
+<script src="js/register.js"></script>
+
+</body>
+</html>

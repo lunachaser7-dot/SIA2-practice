@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Reports — Church Finance</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="reports-page">
+
+    <div class="sidebar">
+        <h2>Church Finance</h2>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="income.html">Income</a>
+            <a href="expenses.html">Expenses</a>
+            <a href="reports.html" class="active">Reports</a>
+            <a href="#" id="logoutLink">Logout</a>
+        </nav>
+    </div>
+
+    <div class="main">
+
+        <div class="reports-hero">
+            <div class="hero-content">
+                <p class="eyebrow">Reports</p>
+                <h1>Financial Reports & Insights</h1>
+                <p class="muted">Visual summaries of donations, expenses, and monthly trends — designed to help your team steward resources well.</p>
+            </div>
+            <svg class="hero-decor" width="480" height="320" viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="g1" x1="0" x2="1">
+                        <stop offset="0" stop-color="#8b5cf6" />
+                        <stop offset="1" stop-color="#2563eb" />
+                    </linearGradient>
+                </defs>
+                <circle cx="380" cy="60" r="120" fill="url(#g1)" opacity="0.12" />
+                <rect x="-40" y="180" width="420" height="220" rx="80" fill="#10b981" opacity="0.06" />
+            </svg>
+        </div>
+
+        <section style="margin-top:24px">
+            <div class="card">
+                <h3>Monthly Summary</h3>
+                <p class="muted">Choose a report to view detailed charts and export options.</p>
+                <!-- Placeholder for charts / report controls -->
+            </div>
+        </section>
+
+        <div class="footer">Reports generated on demand · Export as CSV or PDF for meetings.</div>
+    </div>
+
+    <script src="/config.js"></script>
+    <script src="js/report.js"></script>
+    <script>
+        // basic logout handler
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const logout = document.getElementById('logoutLink');
+            if (logout) logout.addEventListener('click', e=>{ e.preventDefault(); localStorage.removeItem('token'); window.location='login.html'; });
+        });
+    </script>
+
+</body>
+
+</html>

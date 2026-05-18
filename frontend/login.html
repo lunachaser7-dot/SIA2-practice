@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-brand">
+            <div class="login-logo">💒</div>
+            <h1>Church Finance</h1>
+            <p>Securely sign in to manage expenses, income, and reports.</p>
+        </div>
+
+        <div id="serverStatus" class="status-banner"></div>
+
+        <form id="loginForm" class="login-form">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@example.com" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+
+            <p id="loginError" class="error-message"></p>
+            <p id="loginSuccess" class="success-message"></p>
+            <pre id="loginDetails" class="login-details" aria-live="polite"></pre>
+
+            <button type="submit">Login</button>
+            <p class="form-note">Don't have an account? <a href="register.html">Create one</a></p>
+        </form>
+    </div>
+</div>
+
+<script src="/config.js"></script>
+<script src="js/login.js"></script>
+
+</body>
+</html>
