@@ -2,99 +2,88 @@ const express = require("express");
 const router = express.Router();
 
 const db = require("../db");
-const verifyToken = require("../middleware/authMiddleware");
+// ❌ REMOVED verifyToken — we don't use tokens
+// const verifyToken = require("../middleware/authMiddleware");
 
-router.get("/", verifyToken, async (req, res) => {
-
+// ✅ Get all transactions
+router.get("/", async (req, res) => {
     try {
-
-        const result = await db.query(
-            "SELECT * FROM finance ORDER BY id DESC"
+        // ✅ Use `transactions` table (change to `finance` only if that's your real table name)
+        const [result] = await db.execute(
+            "SELECT * FROM transactions ORDER BY id DESC"
         );
-
-        res.json(result.rows);
+        res.json(result);
 
     } catch (err) {
-
-        console.log(err);
-        res.status(500).json(err);
-
+        console.error("Error fetching:", err);
+        res.status(500).json({ message: "Error fetching data", error: err.message });
     }
-
 });
 
-router.post("/", verifyToken, async (req, res) => {
-    const {
-        type,
-        category,
-        amount,
-        description
-    } = req.body;
+// ✅ ADD NEW TRANSACTION — FIXED
+router.post("/", async (req, res) => {
+    const { type, category, amount, description } = req.body;
+
+    // ✅ Basic validation
+    if (!type || !category || !amount || amount <= 0) {
+        return res.status(400).json({ message: "Invalid data: check all fields" });
+    }
 
     try {
-        await db.query(
-            `INSERT INTO finance
-            (
-                type,
-                category,
-                amount,
-                description,
-                transaction_date
-            )
-            VALUES (?, ?, ?, ?, NOW())`,
+        const [result] = await db.execute(
+            `INSERT INTO transactions 
+             (type, category, amount, description, transaction_date)
+             VALUES (?, ?, ?, ?, NOW())`,
             [type, category, amount, description]
         );
 
         res.json({
-            message: "Transaction Added"
+            message: "Transaction Added Successfully",
+            id: result.insertId
         });
+
     } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: "Unable to add transaction." });
+        console.error("Insert Error:", err);
+        res.status(500).json({ message: "Unable to add transaction: " + err.message });
     }
 });
 
-router.put("/:id", verifyToken, async (req, res) => {
+// ✅ UPDATE TRANSACTION
+router.put("/:id", async (req, res) => {
+    const { category, amount, description } = req.body;
 
-    const {
-        category,
-        amount,
-        description
-    } = req.body;
+    try {
+        await db.execute(
+            `UPDATE transactions
+             SET category=?, amount=?, description=?
+             WHERE id=?`,
+            [category, amount, description, req.params.id]
+        );
 
-    await db.query(
-        `
-        UPDATE finance
-        SET
-            category=?,
-            amount=?,
-            description=?
-        WHERE id=?
-        `,
-        [
-            category,
-            amount,
-            description,
-            req.params.id
-        ]
-    );
+        res.json({ message: "Updated Successfully" });
 
-    res.json({
-        message: "Updated"
-    });
-
+    } catch (err) {
+        console.error("Update Error:", err);
+        res.status(500).json({ message: "Update failed" });
+    }
 });
-router.delete("/:id", verifyToken, async (req, res) => {
 
-    await db.query(
-        "DELETE FROM finance WHERE id=?",
-        [req.params.id]
-    );
+// ✅ DELETE TRANSACTION
+router.delete("/:id", async (req, res) => {
+    try {
+        await db.execute(
+            "DELETE FROM transactions WHERE id=?",
+            [req.params.id]
+        );
 
-    res.json({
-        message: "Deleted"
-    });
+        res.json({ message: "Deleted Successfully" });
 
+    } catch (err) {
+        console.error("Delete Error:", err);
+        res.status(500).json({ message: "Delete failed" });
+    }
 });
 
 module.exports = router;
+
+// ❌ DELETE THE EXTRA app.post YOU ADDED AT THE BOTTOM — it causes conflict
