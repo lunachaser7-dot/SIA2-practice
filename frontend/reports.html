@@ -27,6 +27,7 @@
             <div class="hero-content">
                 <p class="eyebrow">Reports</p>
                 <h1>Financial Reports & Insights</h1>
+                <p id="pageUser" class="muted"></p>
                 <p class="muted">Visual summaries of donations, expenses, and monthly trends — designed to help your team steward resources well.</p>
             </div>
             <svg class="hero-decor" width="480" height="320" viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,10 +56,21 @@
     <script src="/config.js"></script>
     <script src="js/report.js"></script>
     <script>
-        // basic logout handler
-        document.addEventListener('DOMContentLoaded', ()=>{
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            const pageUser = document.getElementById('pageUser');
+            if (currentUser.name && pageUser) {
+                pageUser.textContent = `Signed in as ${currentUser.name}`;
+            }
             const logout = document.getElementById('logoutLink');
-            if (logout) logout.addEventListener('click', e=>{ e.preventDefault(); localStorage.removeItem('token'); window.location='login.html'; });
+            if (logout) {
+                logout.addEventListener('click', e => {
+                    e.preventDefault();
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('currentUser');
+                    window.location = 'login.html';
+                });
+            }
         });
     </script>
 

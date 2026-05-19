@@ -18,6 +18,7 @@
             <a href="expenses.html">Expenses</a>
             <a href="reports.html">Reports</a>
             <a href="analytics.html" class="active">Analytics</a>
+            <a href="#" id="logoutLink">Logout</a>
         </nav>
     </div>
 
@@ -27,6 +28,7 @@
             <div class="hero-content">
                 <p class="eyebrow">Analytics</p>
                 <h1>Insightful financial health at a glance</h1>
+                <p id="pageUser" class="muted"></p>
                 <p class="muted">Track giving, spending, and cash flow trends with calm confidence. See the numbers that matter most for your ministry planning.</p>
             </div>
             <svg class="hero-decor" width="440" height="280" viewBox="0 0 440 280" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -152,6 +154,26 @@
 
         <div class="footer">Data refreshed hourly · Tap a report card to export or share with your team.</div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            const pageUser = document.getElementById('pageUser');
+            if (currentUser.name && pageUser) {
+                pageUser.textContent = `Signed in as ${currentUser.name}`;
+            }
+
+            const logout = document.getElementById('logoutLink');
+            if (logout) {
+                logout.addEventListener('click', e => {
+                    e.preventDefault();
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('currentUser');
+                    window.location = 'login.html';
+                });
+            }
+        });
+    </script>
 
 </body>
 

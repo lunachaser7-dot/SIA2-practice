@@ -19,7 +19,7 @@ router.post("/register", async (req, res) => {
     await db.query(
         `
         INSERT INTO users
-        (fullname,email,password,role)
+        (name,email,password,role)
         VALUES ($1,$2,$3,$4)
         `,
         [fullname, email, hashedPassword, role]

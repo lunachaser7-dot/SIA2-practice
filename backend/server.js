@@ -80,11 +80,11 @@ app.post('/api/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await db.query(
-      'INSERT INTO users (fullname, email, password, role) VALUES (?, ?, ?, ?)',
+      'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
       [fullname, email, hashedPassword, role]
     );
 
-    const result2 = await db.query('SELECT id, fullname, email, role FROM users WHERE email = ?', [email]);
+    const result2 = await db.query('SELECT id, name, email, role FROM users WHERE email = ?', [email]);
     const user = result2.rows[0];
     const token = jwt.sign(
       { id: user.id, role: user.role },

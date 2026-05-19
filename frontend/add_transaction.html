@@ -14,7 +14,9 @@
 
         <div class="card-header">
             <h1>Add Transaction</h1>
+            <p id="pageUser" class="muted"></p>
             <p class="muted">Record income or expenses to keep your church finances up to date.</p>
+            <a href="#" id="logoutLink" class="logout-link">Logout</a>
         </div>
 
         <form id="transactionForm" class="transaction-form">
@@ -46,6 +48,25 @@
 
 <script src="/config.js"></script>
 <script src="js/addtransaction.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+        const pageUser = document.getElementById('pageUser');
+        if (currentUser.name && pageUser) {
+            pageUser.textContent = `Signed in as ${currentUser.name}`;
+        }
+
+        const logout = document.getElementById('logoutLink');
+        if (logout) {
+            logout.addEventListener('click', e => {
+                e.preventDefault();
+                localStorage.removeItem('token');
+                localStorage.removeItem('currentUser');
+                window.location = 'login.html';
+            });
+        }
+    });
+</script>
 
 </body>
 

@@ -5,6 +5,14 @@
         return;
     }
 
+    const currentUser = JSON.parse(localStorage.getItem("currentUser") || '{}');
+    const welcomeElement = document.getElementById("dashboardWelcome");
+    const dashboardUser = document.getElementById("dashboardUser");
+    if (currentUser && currentUser.name) {
+        if (welcomeElement) welcomeElement.textContent = `Welcome back, ${currentUser.name}`;
+        if (dashboardUser) dashboardUser.textContent = `Signed in as ${currentUser.name}`;
+    }
+
     fetch(apiUrl("finance"), {
         headers: {
             "Authorization": `Bearer ${token}`

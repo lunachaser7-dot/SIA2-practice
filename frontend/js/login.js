@@ -40,7 +40,7 @@ loginForm.addEventListener("submit", async function(e) {
             return;
         }
 
-        const displayName = data.user.fullname || data.user.name || data.user.email || 'User';
+        const displayName = data.user.name || data.user.fullname || data.user.email || 'User';
 
         if (successMessage) {
             successMessage.textContent = `Login successful — welcome, ${displayName}!`;

@@ -26,6 +26,7 @@
             <div>
                 <p class="eyebrow">Income</p>
                 <h1>All Income</h1>
+                <p id="pageUser" class="page-intro"></p>
                 <p class="page-intro">Review donations and other income sources. Add new entries or export summaries for stewardship reports.</p>
             </div>
             <div class="page-actions">
@@ -84,59 +85,24 @@
 
     <script src="/config.js"></script>
     <script src="js/income.js"></script>
-</body>
-
-</html>
-<!DOCTYPE html>
-<html>
-
-<head>
-
-    <title>Income</title>
-
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
-
-<body>
-
-    <div class="sidebar">
-
-        <h2>Church Finance</h2>
-
-        <a href="index.html">Dashboard</a>
-        <a href="income.html">Income</a>
-        <a href="expenses.html">Expenses</a>
-
-    </div>
-
-    <div class="main">
-
-        <h1>Income Records</h1>
-
-        <table>
-
-            <thead>
-
-                <tr>
-                    <th>Category</th>
-                    <th>Amount</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                </tr>
-
-            </thead>
-
-            <tbody id="financeTable">
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-    <script src="js/app.js"></script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            const pageUser = document.getElementById('pageUser');
+            if (currentUser.name && pageUser) {
+                pageUser.textContent = `Signed in as ${currentUser.name}`;
+            }
+            const logout = document.getElementById('logoutLink');
+            if (logout) {
+                logout.addEventListener('click', e => {
+                    e.preventDefault();
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('currentUser');
+                    window.location = 'login.html';
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
